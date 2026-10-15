@@ -21,6 +21,9 @@ message AccessRecord {
     google.protobuf.Timestamp timestamp = 1;
     map<string, string>       env       = 2; // optional contextual name/value pairs e.g. "k8s-pod" = "mcp-attribute-serviec-gw-123123"
     string                    id        = 3; // a UUID for this record
+    string                    pdp_instance_id = 4; // decision point instance, "<namespace>/<pod>"
+    string                    pdp_epoch       = 5; // random per decision-point process start
+    uint64                    seq             = 6; // 1, 2, 3, ... per (pdp_instance_id, pdp_epoch); 0 = absent
   }
 
   message Principal {
